@@ -1,4 +1,5 @@
 // tests/login.spec.js
+require('dotenv').config();
 const { test, expect } = require('@playwright/test');
 const { LoginPage } = require('../pages/LoginPage');
 
@@ -11,12 +12,14 @@ test('login with invalid credentials shows error', async ({ page }) => {
 });
 
 test('signup with an already-registered email shows error', async ({ page }) => {
+  test.skip(
+    !process.env.TEST_EMAIL,
+    'TEST_EMAIL not set - copy .env.example to .env and fill in a registered email'
+  );
+
   const loginPage = new LoginPage(page);
   await loginPage.goto();
-
-  // NOTE: replace with an email you know is already registered on the site
-  // for this test to demonstrate the "already exist" error correctly.
-  await loginPage.signupStart('Test User', 'existing_user@example.com');
+  await loginPage.signupStart('Test User', process.env.TEST_EMAIL);
 
   await expect(loginPage.signupErrorText).toBeVisible();
 });

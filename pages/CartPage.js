@@ -18,9 +18,11 @@ class CartPage {
   }
 
   async removeItemByIndex(index) {
-  const rowToRemove = this.cartRows.nth(index);
-  await this.deleteButtons.nth(index).click();
-  await rowToRemove.waitFor({ state: 'detached' }); 
+    const rowToRemove = this.cartRows.nth(index);
+    await this.deleteButtons.nth(index).click();
+    // The delete is AJAX-based (no full page reload), so wait for that
+    // specific row to actually detach from the DOM before continuing.
+    await rowToRemove.waitFor({ state: 'detached' });
   }
 
   async proceedToCheckout() {
