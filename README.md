@@ -98,6 +98,20 @@ messages, response shape) independent of frontend rendering. This project delibe
 layers to show when UI testing is appropriate (user journeys) versus when API testing is more
 efficient (data/backend validation).
 
+## Test evidence
+
+### Playwright HTML Report
+26/26 tests passing across Chromium and Firefox — API tests (products, brands, search, login
+verification) plus UI tests (login, search, cart).
+
+![Playwright Report](docs/screenshots/playwright-report.png)
+
+### GitHub Actions CI Run
+Tests run automatically on every push. Latest run: **Success**, 1m 27s, with the HTML report
+uploaded as a downloadable artifact.
+
+![GitHub Actions](docs/screenshots/github-actions.png)
+
 ## Debugging note: a real flaky-test fix
 
 The `remove product from cart` test initially failed intermittently. Root cause: cart item removal
