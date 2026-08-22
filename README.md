@@ -51,6 +51,16 @@ automationexercise-automation/
 │   ├── search.spec.js      # UI: product search (positive + no-results)
 │   ├── cart.spec.js        # UI: add/remove from cart
 │   └── api.spec.js         # API: productsList, brandsList, searchProduct, verifyLogin
+├── test-data/
+│   └── test-data.json      # sample data for search keywords, login cases, API cases
+├── docs/
+│   ├── test-plan.md        # scope, environment, entry/exit criteria, risks
+│   ├── test-scenarios.md   # high-level scenarios mapped to automation files
+│   ├── test-cases.xlsx     # detailed manual test cases + API test cases
+│   ├── bug-reports.md      # defect log (severity vs priority)
+│   └── screenshots/
+│       ├── playwright-report.png
+│       └── github-actions.png
 ├── .github/workflows/
 │   └── tests.yml           # CI pipeline
 ├── .env.example             # template for local test credentials (safe to commit)
@@ -130,7 +140,10 @@ async removeItemByIndex(index) {
 This is preferred over `page.waitForTimeout()` because it waits for the actual DOM condition rather
 than an arbitrary fixed delay — faster on good runs, more reliable on slow ones.
 
-## Related work
+## Related documentation
 
-Companion manual testing spreadsheet: `AutomationExercise_Testing_Portfolio.xlsx` — contains 20 UI
-test cases, 10 API test cases, and a bug report log with severity/priority classification.
+- [`docs/test-plan.md`](docs/test-plan.md) — scope, environment, entry/exit criteria, risks
+- [`docs/test-scenarios.md`](docs/test-scenarios.md) — high-level scenarios mapped to automation files
+- [`docs/test-cases.xlsx`](docs/test-cases.xlsx) — detailed manual UI + API test cases
+- [`docs/bug-reports.md`](docs/bug-reports.md) — defect log with severity/priority classification, including screenshots
+- [`docs/RTM_and_Execution_Report.xlsx`](docs/RTM_and_Execution_Report.xlsx) — requirements traceability matrix + test execution summary
